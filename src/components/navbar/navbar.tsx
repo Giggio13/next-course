@@ -1,16 +1,22 @@
 import { HomeIcon, GamepadIcon, PrizeIcon, RouteIcon, FaceHappyIcon } from "@/components"
+import {cn} from "@/helpers/cn"
 
-const NavbarList = ({children, className}) => {
-  return (<ul className={`my-4 border-t border-indigo-400/20 border-indigo-400 ${className}`}>{children}
+type NavbarListProps = React.ComponentProps<"ul">;
+type NavbarListItemProps = React.ComponentProps<"li">;
+
+
+const NavbarList = ({children, className, ...props }: NavbarListProps) => {
+  return <ul className={cn("my-4 border-t border-indigo-400/20 border-indigo-400", className)} {...props}>
+    {children}
   </ul>
-  );
 };
 
-const NavbarListItem = ({children, className}) => {
-  return (<li className={`my-2 rounded p-2 bg-transparent hover:bg-indigo-400/40 hover:text-slate-100 cursor-pointer flex gap-2 items-center${className}`}>
+const NavbarListItem = ({children, className, ...props}: NavbarListItemProps) => {
+  return (<li className={cn("my-2 rounded p-2 bg-transparent hover:bg-indigo-400/40 hover:text-slate-100 cursor-pointer flex gap-2 items-center", 
+  className)} {...props}>
     {children}
   </li>
-  );
+  );back
 };
 
 
