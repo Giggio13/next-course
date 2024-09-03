@@ -1,38 +1,9 @@
 import { HomeIcon, GamepadIcon, PrizeIcon, RouteIcon, FaceHappyIcon } from "@/components"
 import {cn} from "@/helpers/cn"
-import Link from "next/link";
-
-type NavbarProps = React.ComponentProps<"nav">
-type NavbarListProps = React.ComponentProps<"ul">;
-type NavbarListItemProps = React.ComponentProps<"li">;
-type NavbarListItemLinkProps = React.ComponentProps<typeof Link>;
-
-
-const NavbarList = ({children, className, ...props }: NavbarListProps) => {
-  return <ul className={cn("my-4 border-t border-indigo-400/20 border-indigo-400", className)} {...props}>
-    {children}
-  </ul>
-};
-
-const NavbarListItem = ({children, className, ...props}: NavbarListItemProps) => {
-  return (<li className={cn("my-2 rounded p-2 bg-transparent hover:bg-indigo-400/40 hover:text-slate-100 cursor-pointer flex gap-2 items-center", 
-  className)} {...props}>
-    {children}
-  </li>
-  );
-};
-
-const NavbarListItemLink = ({ href, children, className, ...props }: NavbarListItemLinkProps) => {
-  return (
-  <NavbarListItem className={cn("p-0", className)}>
-    <Link href={href} className="flex gap-2 items-center rounded-lg p-2 w-full" {...props}>
-      {children}
-    </Link>
-  </NavbarListItem>
-  );
-};
-
-
+import { NavbarProps } from "./types";
+import { NavbarList } from "./NavbarList";
+import { NavbarListItemLink } from "./NavbarListItemLink";
+import { NavbarListItemButton } from "./NavbarListItemButton";
 
 export const Navbar = ({className, ...props}: NavbarProps) => {
     return (
@@ -48,20 +19,20 @@ export const Navbar = ({className, ...props}: NavbarProps) => {
               <NavbarListItemLink href="/">
                 <HomeIcon className="w-4 h-4"/>Home
               </NavbarListItemLink>
-            <NavbarListItemLink href="/games">
-              <GamepadIcon className="w-4 h-4"/>Games
-            </NavbarListItemLink>
-            <NavbarListItemLink href="/top-10">
-            <PrizeIcon className="w-4 h-4"/>Top 10
-            </NavbarListItemLink>
-            <NavbarListItemLink href="/walkthroughs">
-            <RouteIcon className="w-4 h-4"/>Walkthroughs
-            </NavbarListItemLink>
-          </NavbarList>
+              <NavbarListItemLink href="/games">
+                <GamepadIcon className="w-4 h-4"/>Games
+              </NavbarListItemLink>
+              <NavbarListItemLink href="/top-10">
+                <PrizeIcon className="w-4 h-4"/>Top 10
+              </NavbarListItemLink>
+              <NavbarListItemLink href="/walkthroughs">
+                <RouteIcon className="w-4 h-4"/>Walkthroughs
+              </NavbarListItemLink>
+            </NavbarList>
           <NavbarList>
-          <NavbarListItemLink href="/user">
-            <FaceHappyIcon className="w-4 h-4"/>User
-            </NavbarListItemLink>
+            <NavbarListItemLink href="/user">
+              <FaceHappyIcon className="w-4 h-4"/>User
+              </NavbarListItemLink>
           </NavbarList>
         </nav>
       );
