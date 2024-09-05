@@ -4,15 +4,18 @@ import { NavbarProps } from "./types";
 import { NavbarList } from "./NavbarList";
 import { NavbarListItemLink } from "./NavbarListItemLink";
 import { NavbarListItemButton } from "./NavbarListItemButton";
+import Image from "next/image";
 
 export const Navbar = ({className, ...props}: NavbarProps) => {
     return (
         <nav className={cn("flex h-screen flex-col bg-slate-900 border-r border-indigo-400/20 hover:border-indigo-400/40 w-72 p-2 text-slate-300", className)} {...props}>
           <div className="flex items-center justify-center">
-            <img 
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAwjxGP9h9v1FZXW37MhhHsR0_u_rR0UN7Dg&s" 
+            <Image
+              src="https://emersonbroga.com/e/assets/emersonbroga-logo-name-pink.png" 
               alt="Logo EmersonBrogaDev" 
-              className="w-auto h-20 p-2"
+              className="w-auto h-12 p-2"
+              width={112}
+              height={32}
             />
           </div>
           <NavbarList className={"flex-grow"}>
