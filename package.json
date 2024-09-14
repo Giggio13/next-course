@@ -17,7 +17,8 @@
     "react-dom": "^18",
     "tailwind": "^4.0.0",
     "tailwind-merge": "^2.5.2",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "url-slug": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -33,4 +34,5 @@
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"}  prisma/seed/seed.ts"
   }
+  
 }
