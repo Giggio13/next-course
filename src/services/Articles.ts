@@ -7,6 +7,7 @@ const ArticleService = {
         const offset = (page - 1) * limit;
         const data = await Article.get({ limit, offset });
         const total = await Article.count({});
+        const totalPages = Math.ceil(total / limit)
         return {
             data,
             metadata: {
@@ -14,6 +15,7 @@ const ArticleService = {
                 limit,
                 offset,
                 total,
+                totalPages  
             },
         };
     },
@@ -22,6 +24,7 @@ const ArticleService = {
         const orderBy = {publishAt: "desc"};
         const data = await Article.get({orderBy, limit, offset});
         const total = await Article.count({});
+        const totalPages = Math.ceil((total - HOME_LATEST_COUNT) / limit);
         return {
             data,
             metadata: {
@@ -29,27 +32,30 @@ const ArticleService = {
                 limit,
                 offset,
                 total,
+                totalPages
             },
         }; 
     },
     getHomeLatestArticles: async () => {
-        const page = 1;
-        const limit = HOME_LATEST_COUNT;
-        const offset = 0;
-        const orderBy = {publishAt: "desc"};
-        const data = await Article.get({orderBy, limit, offset});
-        const total = await Article.count({});
-        return {
-            data,
-            metadata: {
-                page,
-                limit,
-                offset,
-                total,
-            },
-        }; 
-    }
-    
-};
+            const page = 1;
+            const limit = HOME_LATEST_COUNT;
+            const offset = 0;
+            const orderBy = {publishAt: "desc"};
+            const data = await Article.get({orderBy, limit, offset});
+            const total = await Article.count({});
+            const totalPages = Math.ceil((total - HOME_LATEST_COUNT) / limit);
+            return {
+                data,
+                metadata: {
+                    page,
+                    limit,
+                    offset,
+                    total,
+                    totalPages
+                },
+            }; 
+        }
+        
+    };
 
-export default ArticleService;
+    export default ArticleService;
