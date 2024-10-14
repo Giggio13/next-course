@@ -64,7 +64,6 @@ async function seedGamesAndGenres() {
             };
         });
     
-
         const record = await prisma.games.create({
             data: {
                 title: game.title,
@@ -98,11 +97,8 @@ async function truncateGamesAndGenres() {
     await prisma.$executeRawUnsafe("DELETE FROM SQLITE_SEQUENCE WHERE name=$1;", "Games");
     await prisma.$executeRawUnsafe("DELETE FROM SQLITE_SEQUENCE WHERE name=$1;", "Genres");
     return;
-
 }
     
-
-
 main()
     .then(async () => {
         await prisma.$disconnect();

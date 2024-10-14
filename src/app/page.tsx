@@ -1,4 +1,4 @@
-import { Pagination } from '@/components';
+import { PageWrapper, Pagination } from '@/components';
 import ArticleService from '@/services/Articles';
 import Image from 'next/image';
 
@@ -11,7 +11,7 @@ export default async function Home({ searchParams }: { searchParams?: {page?: st
   const latestArticles = await ArticleService.getHomeLatestArticles();
 
   return (
-    <div className="ml-72">
+    <PageWrapper>
       <div className="w-full h-[35vh] bg-orange-400 flex-center">
         <p>Algo Chamativo</p>
       </div>
@@ -21,7 +21,8 @@ export default async function Home({ searchParams }: { searchParams?: {page?: st
         <div className="grid grid-cols-4 gap-4 h-[35vh]">
 
           {latestArticles.data.map((article) => {
-            return (<div key={article.title} className='flex-center relative overflow-hidden'>
+            return (
+            <div key={article.title} className='flex-center relative overflow-hidden'>
             <div className='h-full w-full'>
               <Image  
                 className="h-full w-full object-cover transition duration-500 hover:scale-105" 
@@ -77,7 +78,7 @@ export default async function Home({ searchParams }: { searchParams?: {page?: st
             <div className="col-span-4 bg-emerald-500">B</div>
           </div>
         </div>
-      </div>
+      </PageWrapper>
     
     
   );
